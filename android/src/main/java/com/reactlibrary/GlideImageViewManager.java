@@ -1,5 +1,7 @@
 package com.reactlibrary;
 
+import android.content.Context;
+import android.net.Uri;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -11,24 +13,23 @@ import javax.annotation.Nonnull;
 
 public class GlideImageViewManager extends SimpleViewManager<ImageView> {
 
-    private String source;
+    private Context context;
 
     @Nonnull
     @Override
     public String getName() {
-        return "ImageNative";
+        return "GlideImageViewManager";
     }
 
     @ReactProp(name = "source")
     public void getSource(ImageView view,String image) {
-       source = image;
+        Glide.with(context).load(Uri.parse(image)).into(view);
     }
 
     @Nonnull
     @Override
     protected ImageView createViewInstance(@Nonnull ThemedReactContext reactContext) {
-        ImageView imageView = new ImageView(reactContext);
-        Glide.with(imageView).load(source);
-        return imageView;
+        context = reactContext;
+        return new ImageView(reactContext);
     }
 }
