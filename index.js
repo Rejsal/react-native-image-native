@@ -6,7 +6,7 @@ const ImageNativeComponent = Platform.select({
   ios: Image, 
   
   // name from overriden `getName` function
-  android: requireNativeComponent('ImageNativeModule'),
+  android: requireNativeComponent('GlideImageViewManager'),
 });
 
 
