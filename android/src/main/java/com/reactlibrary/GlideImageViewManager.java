@@ -20,7 +20,7 @@ public class GlideImageViewManager extends SimpleViewManager<ImageView> {
     }
 
     @ReactProp(name = "source")
-    public void source(String image) {
+    public void getSource(ImageView view,String image) {
        source = image;
     }
 
