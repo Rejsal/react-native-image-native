@@ -16,8 +16,9 @@ public class ImageNativePackage implements ReactPackage {
         return Arrays.<NativeModule>asList(new ImageNativeModule(reactContext));
     }
 
+
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        return Collections.<ViewManager>singletonList(new GlideImageViewManager());
     }
 }
