@@ -2,6 +2,7 @@ package com.reactlibrary;
 
 import android.content.Context;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -24,6 +25,19 @@ public class GlideImageViewManager extends SimpleViewManager<ImageView> {
     @ReactProp(name = "source")
     public void getSource(ImageView view,String image) {
         Glide.with(context).load(Uri.parse(image)).into(view);
+    }
+
+    @ReactProp(name = "resizeMode")
+    public void setResize(ImageView view,String mode) {
+        view.setCropToPadding(true);
+        if(mode != null && !TextUtils.isEmpty(mode)) {
+            if(TextUtils.equals(mode,"cover"))
+                view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            if(TextUtils.equals(mode,"stretch"))
+                view.setScaleType(ImageView.ScaleType.FIT_XY);
+            if(TextUtils.equals(mode,"contain"))
+                view.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        }
     }
 
     @Nonnull
