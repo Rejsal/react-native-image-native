@@ -1,4 +1,4 @@
-react-native-image-native uses Glide for android and react native <Image/> for ios.
+react-native-image-native uses Glide for android and react native Image for ios.
 
 
 Usage: 
